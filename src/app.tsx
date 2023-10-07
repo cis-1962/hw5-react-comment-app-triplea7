@@ -1,5 +1,5 @@
-import PostHeader from './post';
+import PostHeader from './postHeader';
 
 export default function App() {
-  return PostHeader();
+  return <h1>New Post{PostHeader(3)}</h1>;
 }
