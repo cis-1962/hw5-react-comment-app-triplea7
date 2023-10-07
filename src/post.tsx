@@ -5,7 +5,7 @@ export default function PostHeader() {
   const [bodyInput, enterBodyInput] = useState('');
   return (
     <div className="post">
-      <h1>New Post</h1>
+      <h1>Testing Testing...</h1>
       <div>
         <input
           type="text"
