@@ -1,0 +1,13 @@
+h1 {
+   font: "Courier-Bold";
+   color: #281E5D
+}
+
+input {
+    font: "Courier"
+}
+
+.post {
+    border: 2px;
+    border-radius: 25px #281E5D;
+}
