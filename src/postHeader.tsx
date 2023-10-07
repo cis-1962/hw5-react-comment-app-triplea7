@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// eslint-disable-next-line import/no-named-as-default
 import Post from './post';
 
 const posts = [<div />];
