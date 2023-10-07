@@ -1,12 +1,9 @@
-import PostHeader, { posts } from './postHeader';
+import PostHeader from './postHeader';
 
 export default function App() {
   return (
-    <>
-      <div>
-        <PostHeader />
-      </div>
-      <div>{posts}</div>
-    </>
+    <div>
+      <PostHeader />
+    </div>
   );
 }
