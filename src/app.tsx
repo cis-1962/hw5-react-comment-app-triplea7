@@ -1,5 +1,5 @@
-import Post from './post';
+import PostHeader from './post';
 
 export default function App() {
-  return Post();
+  return PostHeader();
 }
