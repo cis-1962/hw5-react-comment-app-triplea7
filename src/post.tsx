@@ -1,12 +1,35 @@
 import { useState } from 'react';
 
-export default function PostHeader() {
-  let saveName;
-  let saveBody;
-  let additionalElements;
+type PostProps = {
+  name: string;
+  body: string;
+};
 
+const posts: PostProps[] = [];
+
+function displayPosts() {
+  const postsList = document.getElementById('postsList');
+  if (postsList) {
+    postsList.innerHTML = '';
+
+    posts.forEach((post) => {
+      const nameDiv = document.createElement('div');
+      nameDiv.innerHTML = `${post.name}`;
+      const bodyDiv = document.createElement('div');
+      bodyDiv.innerHTML = `${post.body}`;
+      postsList.appendChild(nameDiv);
+      postsList.appendChild(bodyDiv);
+    });
+  }
+}
+
+export default function PostHeader() {
   const [nameInput, enterNameInput] = useState('');
   const [bodyInput, enterBodyInput] = useState('');
+
+  let postedName: string;
+  let postedBody: string;
+
   return (
     <>
       <div className="post">
@@ -18,7 +41,8 @@ export default function PostHeader() {
             placeholder="Your name here"
             onChange={(e) => {
               enterNameInput(e.target.value);
-              saveName = e.target.value;
+              postedName = e.target.value;
+              console.log(postedName);
             }}
           />
         </div>
@@ -29,30 +53,26 @@ export default function PostHeader() {
             placeholder="Speak your truth..."
             onChange={(ev) => {
               enterBodyInput(ev.target.value);
-              saveBody = ev.target.value;
+              postedBody = ev.target.value;
+              console.log(postedBody);
             }}
           />
         </div>
         <button
           type="submit"
           onClick={() => {
-            additionalElements = Post(saveName, saveBody);
+            const newPost: PostProps = {
+              name: postedName,
+              body: postedBody,
+            };
+            posts.push(newPost);
+            displayPosts();
           }}
         >
           Post
         </button>
       </div>
-      <div className="post"> {additionalElements}</div>
+      <div id="postsList" />
     </>
-  );
-}
-
-function Post(name, body) {
-  PostHeader();
-  return (
-    <div className="post">
-      <div> {name}</div>
-      <div> {body}</div>
-    </div>
   );
 }
