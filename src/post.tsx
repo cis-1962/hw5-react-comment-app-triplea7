@@ -56,20 +56,13 @@ export default function PostHeader() {
         <button
           type="submit"
           onClick={() => {
-            const getName = document.getElementById('nameBox');
-            const getBody = document.getElementById('bodyBox');
-            if (getName !== null && getBody !== null) {
-              const nameIn = getName.getAttribute('value');
-              const bodyIn = getBody.getAttribute('value');
-              if (nameIn !== null && bodyIn !== null) {
-                const newPost: PostProps = {
-                  name: nameInput,
-                  body: bodyInput,
-                };
-                posts.push(newPost);
-              }
-            }
+            const newPost: PostProps = {
+              name: nameInput,
+              body: bodyInput,
+            };
             displayPosts();
+            enterNameInput('');
+            enterBodyInput('');
           }}
         >
           Post
