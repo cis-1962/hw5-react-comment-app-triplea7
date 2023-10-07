@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // eslint-disable-next-line import/no-named-as-default
-import Post from './post';
+import Post, { replies } from './post';
 
 const posts = [<div />];
 
@@ -41,7 +41,10 @@ export default function PostHeader() {
       >
         Post
       </button>
-      <div>{posts}</div>
+      <div>
+        {posts}
+        <div>{replies}</div>
+      </div>
     </div>
   );
 }
