@@ -27,45 +27,48 @@ export default function PostHeader() {
   const [nameInput, enterNameInput] = useState('');
   const [bodyInput, enterBodyInput] = useState('');
 
-  let postedName: string;
-  let postedBody: string;
-
   return (
     <>
       <div className="post">
         <h1>New Post</h1>
         <div>
           <input
+            id="nameBox"
             type="text"
             value={nameInput}
             placeholder="Your name here"
             onChange={(e) => {
               enterNameInput(e.target.value);
-              postedName = e.target.value;
-              console.log(postedName);
             }}
           />
         </div>
         <div>
           <input
+            id="bodyBox"
             type="text"
             value={bodyInput}
             placeholder="Speak your truth..."
             onChange={(ev) => {
               enterBodyInput(ev.target.value);
-              postedBody = ev.target.value;
-              console.log(postedBody);
             }}
           />
         </div>
         <button
           type="submit"
           onClick={() => {
-            const newPost: PostProps = {
-              name: postedName,
-              body: postedBody,
-            };
-            posts.push(newPost);
+            const getName = document.getElementById('nameBox');
+            const getBody = document.getElementById('bodyBox');
+            if (getName !== null && getBody !== null) {
+              const nameIn = getName.getAttribute('value');
+              const bodyIn = getBody.getAttribute('value');
+              if (nameIn !== null && bodyIn !== null) {
+                const newPost: PostProps = {
+                  name: nameInput,
+                  body: bodyInput,
+                };
+                posts.push(newPost);
+              }
+            }
             displayPosts();
           }}
         >
