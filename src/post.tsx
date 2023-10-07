@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './src/style.css';
 
 export default function Post() {
   const [nameInput, enterNameInput] = useState('');
