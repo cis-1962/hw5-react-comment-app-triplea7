@@ -5,7 +5,7 @@ type PostProps = {
   body: string;
 };
 
-export const replies = [<div />];
+const replies = [<div />];
 
 export default function Post({ name, body }: PostProps) {
   return (

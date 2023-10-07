@@ -1,10 +1,5 @@
 import PostHeader from './postHeader';
 
 export default function Reply() {
-  return (
-    <>
-      <div>Reply</div>
-      <PostHeader />
-    </>
-  );
+  return <div>{PostHeader()}Reply</div>;
 }
