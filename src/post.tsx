@@ -15,7 +15,7 @@ export default function Post({ name, body }: PostProps) {
       <button type="submit" onClick={() => replies.push(Reply())}>
         Reply
       </button>
-      <div>replies</div>
+      <div>{replies}</div>
     </div>
   );
 }
