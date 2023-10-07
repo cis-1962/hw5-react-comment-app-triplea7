@@ -60,6 +60,7 @@ export default function PostHeader() {
               name: nameInput,
               body: bodyInput,
             };
+            posts.push(newPost);
             displayPosts();
             enterNameInput('');
             enterBodyInput('');
