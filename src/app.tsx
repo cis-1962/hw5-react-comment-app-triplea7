@@ -1,3 +1,5 @@
+import Post from './post';
+
 export default function App() {
-  return <main>Hello World!</main>;
+  return Post();
 }
