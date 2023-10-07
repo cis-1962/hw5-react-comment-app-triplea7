@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import styles from 'src/style.module.css';
 
 export default function Post() {
   const [nameInput, enterNameInput] = useState('');
@@ -7,9 +6,9 @@ export default function Post() {
   return (
     <>
       <head>
-        <link rel="stylesheet" type="text/css" href="src/style.module.css" />
+        <link rel="stylesheet" type="text/css" href="src/style.css" />
       </head>
-      <div className={styles.post}>
+      <div className="post">
         <h1>New Post</h1>
         <input
           type="text"
