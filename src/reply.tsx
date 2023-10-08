@@ -8,20 +8,19 @@ export interface ReplyProps {
     replies: ReplyProps['post'][];
     upvotes: number;
     downvotes: number;
+    depth: number;
   };
-  depth: number;
-  whenReply: (name: string, body: string, pIdx?: number) => void;
-  pIdx?: number;
+  whenReply: (name: string, body: string, depth: number) => void;
 }
 
-export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
+export default function Reply({ post, whenReply }: ReplyProps) {
   const [replier, setReplier] = useState('');
   const [replyBody, setReplyBody] = useState('');
   const [showInputs, setShowInputs] = useState(false);
-  const canReply = depth < 3;
+  const canReply = post.depth < 3;
 
   return (
-    <div style={{ marginLeft: depth * 25 }}>
+    <div style={{ marginLeft: post.depth * 25 }}>
       <p>
         <strong>{post.name}: </strong>
         {post.body}
@@ -58,7 +57,7 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
           <button
             type="submit"
             onClick={() => {
-              whenReply(replier, replyBody, pIdx);
+              whenReply(replier, replyBody, post.depth + 1);
               setReplier('');
               setReplyBody('');
               setShowInputs(false);
@@ -70,14 +69,12 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
       )}
       <div>
         {post.replies.map((reply, index) => (
-          <div className="reply" style={{ marginLeft: depth * 25 }}>
+          <div className="reply" style={{ marginLeft: reply.depth * 25 }}>
             <Reply
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               post={reply}
-              depth={depth + 1}
               whenReply={whenReply}
-              pIdx={pIdx}
             />
           </div>
         ))}

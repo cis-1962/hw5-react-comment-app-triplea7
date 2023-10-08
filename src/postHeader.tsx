@@ -7,29 +7,23 @@ export default function PostHeader() {
   const [bodyInput, enterBodyInput] = useState('');
   const [posts, setPosts] = useState<ReplyProps['post'][]>([]);
 
-  const ifReply =
-    (index: number) => (replier: string, replyBody: string, pIdx?: number) => {
-      const currPosts = [...posts];
-      if (pIdx !== undefined) {
-        currPosts[pIdx].replies.push({
-          name: replier,
-          body: replyBody,
-          replies: [],
-          upvotes: 0,
-          downvotes: 0,
-        });
-      } else {
-        currPosts[index].replies.push({
-          name: replier,
-          body: replyBody,
-          replies: [],
-          upvotes: 0,
-          downvotes: 0,
-        });
-      }
+  const ifReply = (index: number) => (replier: string, replyBody: string) => {
+    const currPosts = [...posts];
+    const currDepth = currPosts[index].depth;
 
-      setPosts(currPosts);
-    };
+    if (currDepth + 1 < 3) {
+      currPosts[index].replies.push({
+        name: replier,
+        body: replyBody,
+        replies: [],
+        upvotes: 0,
+        downvotes: 0,
+        depth: currDepth + 1,
+      });
+    }
+
+    setPosts(currPosts);
+  };
 
   return (
     <div>
@@ -62,6 +56,7 @@ export default function PostHeader() {
               replies: [],
               upvotes: 0,
               downvotes: 0,
+              depth: 0,
             };
             setPosts([...posts, newPost]);
             enterNameInput('');
@@ -75,7 +70,7 @@ export default function PostHeader() {
       {posts.map((p, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <div key={index} className="post">
-          <Reply post={p} depth={0} whenReply={ifReply(index)} pIdx={index} />
+          <Reply post={p} whenReply={ifReply(index)} />
         </div>
       ))}
     </div>
