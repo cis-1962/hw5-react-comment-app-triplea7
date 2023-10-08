@@ -27,7 +27,7 @@ export default function Vote({ upvotes, downvotes }: VoteProps) {
       >
         Downvote
       </button>
-      Votes: {upvote + downvote}
+      Votes: {upvote - downvote}
     </div>
   );
 }
