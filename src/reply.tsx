@@ -21,7 +21,7 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
   const canReply = depth < 3;
 
   return (
-    <div style={{ marginLeft: depth * 25 }}>
+    <div className="reply" style={{ marginLeft: depth * 25 }}>
       <p>
         <strong>{post.name}: </strong>
         {post.body}
@@ -48,7 +48,7 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
             <input
               type="text"
               value={replyBody}
-              placeholder="Speak your truth..."
+              placeholder="Clap back!."
               onChange={(ev) => {
                 setReplyBody(ev.target.value);
               }}

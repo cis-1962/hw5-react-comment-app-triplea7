@@ -32,7 +32,7 @@ export default function PostHeader() {
     };
 
   return (
-    <div>
+    <div className="post">
       <strong>New Post</strong>
       <div>
         <input
