@@ -15,10 +15,13 @@ export default function Reply({ post, whenReply }: ReplyProps) {
 
   return (
     <div>
+      <p>
+        <strong>{post.name}:</strong>
+        {post.body}
+      </p>
       <div>
         <input
           type="text"
-          value={replier}
           placeholder="Your name here"
           onChange={(e) => {
             setReplier(e.target.value);
