@@ -55,6 +55,7 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
               whenReply(replier, replyBody);
               setReplier('');
               setReplyBody('');
+              setShowInputs(false);
             }}
           >
             Post
