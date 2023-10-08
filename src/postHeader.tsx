@@ -7,15 +7,25 @@ export default function PostHeader() {
   const [bodyInput, enterBodyInput] = useState('');
   const [posts, setPosts] = useState<ReplyProps['post'][]>([]);
 
-  const ifReply = (index: number) => (replier: string, replyBody: string) => {
-    const currPosts = [...posts];
-    currPosts[index].replies.push({
-      name: replier,
-      body: replyBody,
-      replies: [],
-    });
-    setPosts(currPosts);
-  };
+  const ifReply =
+    (index: number) => (replier: string, replyBody: string, pIdx?: number) => {
+      const currPosts = [...posts];
+      if (pIdx !== undefined) {
+        currPosts[pIdx].replies.push({
+          name: replier,
+          body: replyBody,
+          replies: [],
+        });
+      } else {
+        currPosts[index].replies.push({
+          name: replier,
+          body: replyBody,
+          replies: [],
+        });
+      }
+
+      setPosts(currPosts);
+    };
 
   return (
     <div>

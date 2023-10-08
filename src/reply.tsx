@@ -7,10 +7,11 @@ export interface ReplyProps {
     replies: ReplyProps['post'][];
   };
   depth: number;
-  whenReply: (name: string, body: string) => void;
+  whenReply: (name: string, body: string, pIdx?: number) => void;
+  pIdx?: number;
 }
 
-export default function Reply({ post, depth, whenReply }: ReplyProps) {
+export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
   const [replier, setReplier] = useState('');
   const [replyBody, setReplyBody] = useState('');
   const [showInputs, setShowInputs] = useState(false);
@@ -52,7 +53,7 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
           <button
             type="submit"
             onClick={() => {
-              whenReply(replier, replyBody);
+              whenReply(replier, replyBody, pIdx);
               setReplier('');
               setReplyBody('');
               setShowInputs(false);
@@ -70,6 +71,7 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
             post={reply}
             depth={depth + 1}
             whenReply={whenReply}
+            pIdx={pIdx}
           />
         ))}
       </div>
