@@ -71,7 +71,7 @@ export default function PostHeader() {
         {posts.map((p, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index}>
-            <Reply post={p} depth={0} whenReply={ifReply(index)} />
+            <Reply post={p} depth={0} whenReply={ifReply(index)} pIdx={index} />
           </div>
         ))}
       </div>
