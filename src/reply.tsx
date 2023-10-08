@@ -21,7 +21,7 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
         <strong>{post.name}: </strong>
         {post.body}
       </p>
-      {depth < 3 && !showInputs ? (
+      {depth < 2 && !showInputs ? (
         <button type="submit" onClick={() => setShowInputs(true)}>
           Reply
         </button>
