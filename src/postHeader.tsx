@@ -73,7 +73,7 @@ export default function PostHeader() {
           Post
         </button>
       ) : null}
-      <div>
+      <div className="post">
         {posts.map((p, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index} className="post">

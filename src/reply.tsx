@@ -28,9 +28,12 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
       </p>
       <Vote upvotes={post.upvotes} downvotes={post.downvotes} />
       {canReply && !showInputs ? (
-        <button type="submit" onClick={() => setShowInputs(true)}>
-          Reply
-        </button>
+        <div>
+          {' '}
+          <button type="submit" onClick={() => setShowInputs(true)}>
+            Reply
+          </button>{' '}
+        </div>
       ) : null}
       {canReply && showInputs && (
         <div>
@@ -48,7 +51,7 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
             <input
               type="text"
               value={replyBody}
-              placeholder="Clap back!."
+              placeholder="Clap back!"
               onChange={(ev) => {
                 setReplyBody(ev.target.value);
               }}

@@ -4,20 +4,12 @@ h1 {
 }
 
 .post {
-  border: 2px;
-  border-radius: 25px #281e5d;
-  color: #281e5d;
+  border: 2px solid #281e5d;
+  border-radius: 25px;
   font: 'Courier';
 }
 
 button {
   font: 'Courier';
   color: #281e5d;
-}
-
-Reply {
-  border: 2px;
-  border-radius: 25px #281e5d;
-  color: #281e5d;
-  font: 'Courier';
 }
