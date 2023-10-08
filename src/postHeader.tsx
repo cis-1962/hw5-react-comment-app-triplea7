@@ -7,23 +7,23 @@ export default function PostHeader() {
   const [bodyInput, enterBodyInput] = useState('');
   const [posts, setPosts] = useState<ReplyProps['post'][]>([]);
 
-  const ifReply = (index: number) => (replier: string, replyBody: string) => {
-    const currPosts = [...posts];
-    const currDepth = currPosts[index].depth;
+  const ifReply =
+    (index: number, depth: number) => (replier: string, replyBody: string) => {
+      const currPosts = [...posts];
 
-    if (currDepth + 1 < 3) {
-      currPosts[index].replies.push({
-        name: replier,
-        body: replyBody,
-        replies: [],
-        upvotes: 0,
-        downvotes: 0,
-        depth: currDepth + 1,
-      });
-    }
+      if (depth < 2) {
+        currPosts[index].replies.push({
+          name: replier,
+          body: replyBody,
+          replies: [],
+          upvotes: 0,
+          downvotes: 0,
+          depth: depth + 1,
+        });
+      }
 
-    setPosts(currPosts);
-  };
+      setPosts(currPosts);
+    };
 
   return (
     <div>
@@ -70,7 +70,7 @@ export default function PostHeader() {
       {posts.map((p, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <div key={index} className="post">
-          <Reply post={p} whenReply={ifReply(index)} />
+          <Reply post={p} whenReply={ifReply(index, 0)} />
         </div>
       ))}
     </div>

@@ -17,7 +17,7 @@ export default function Reply({ post, whenReply }: ReplyProps) {
   const [replier, setReplier] = useState('');
   const [replyBody, setReplyBody] = useState('');
   const [showInputs, setShowInputs] = useState(false);
-  const canReply = post.depth < 3;
+  const canReply = post.depth < 2;
 
   return (
     <div style={{ marginLeft: post.depth * 25 }}>
@@ -54,17 +54,19 @@ export default function Reply({ post, whenReply }: ReplyProps) {
               }}
             />
           </div>
-          <button
-            type="submit"
-            onClick={() => {
-              whenReply(replier, replyBody, post.depth + 1);
-              setReplier('');
-              setReplyBody('');
-              setShowInputs(false);
-            }}
-          >
-            Post
-          </button>
+          {replier !== '' && replyBody !== '' ? (
+            <button
+              type="submit"
+              onClick={() => {
+                whenReply(replier, replyBody, post.depth + 1);
+                setReplier('');
+                setReplyBody('');
+                setShowInputs(false);
+              }}
+            >
+              Post
+            </button>
+          ) : null}
         </div>
       )}
       <div>
