@@ -32,7 +32,7 @@ export default function PostHeader() {
     };
 
   return (
-    <div className="post">
+    <div>
       <strong>New Post</strong>
       <div>
         <input
@@ -76,7 +76,7 @@ export default function PostHeader() {
       <div>
         {posts.map((p, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <div key={index}>
+          <div key={index} className="post">
             <Reply post={p} depth={0} whenReply={ifReply(index)} pIdx={index} />
           </div>
         ))}

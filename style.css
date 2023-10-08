@@ -10,14 +10,14 @@ h1 {
   font: 'Courier';
 }
 
-.reply {
+button {
+  font: 'Courier';
+  color: #281e5d;
+}
+
+Reply {
   border: 2px;
   border-radius: 25px #281e5d;
   color: #281e5d;
   font: 'Courier';
-}
-
-button {
-  font: 'Courier';
-  color: #281e5d;
 }
