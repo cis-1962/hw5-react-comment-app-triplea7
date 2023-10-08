@@ -14,7 +14,7 @@ export default function PostHeader() {
 
       if (parentIdx !== undefined) {
         const parent = currPosts[index].replies[parentIdx];
-        if (parent.depth + 1 < 2) {
+        if (parent.depth + 1 < 3) {
           parent.replies.push({
             name: replier,
             body: replyBody,
@@ -24,7 +24,7 @@ export default function PostHeader() {
             depth: parent.depth + 1,
           });
         }
-      } else if (depth < 2) {
+      } else if (depth < 3) {
         currPosts[index].replies.push({
           name: replier,
           body: replyBody,

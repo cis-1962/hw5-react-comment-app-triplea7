@@ -18,7 +18,7 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
   const [replier, setReplier] = useState('');
   const [replyBody, setReplyBody] = useState('');
   const [showInputs, setShowInputs] = useState(false);
-  const canReply = post.depth < 2;
+  const canReply = post.depth < 3;
 
   return (
     <div style={{ marginLeft: post.depth * 25 }}>
