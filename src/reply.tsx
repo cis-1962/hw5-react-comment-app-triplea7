@@ -6,21 +6,22 @@ export interface ReplyProps {
     body: string;
     replies: ReplyProps['post'][];
   };
+  depth: number;
   whenReply: (name: string, body: string) => void;
 }
 
-export default function Reply({ post, whenReply }: ReplyProps) {
+export default function Reply({ post, depth, whenReply }: ReplyProps) {
   const [replier, setReplier] = useState('');
   const [replyBody, setReplyBody] = useState('');
   const [showInputs, setShowInputs] = useState(false);
 
   return (
-    <div>
+    <div style={{ marginLeft: depth * 25 }}>
       <p>
         <strong>{post.name}: </strong>
         {post.body}
       </p>
-      {!showInputs ? (
+      {depth < 3 && !showInputs ? (
         <button type="submit" onClick={() => setShowInputs(true)}>
           Reply
         </button>
@@ -29,6 +30,7 @@ export default function Reply({ post, whenReply }: ReplyProps) {
           <div>
             <input
               type="text"
+              value={replier}
               placeholder="Your name here"
               onChange={(e) => {
                 setReplier(e.target.value);
@@ -57,8 +59,13 @@ export default function Reply({ post, whenReply }: ReplyProps) {
           </button>
           <div>
             {post.replies.map((reply, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Reply key={index} post={reply} whenReply={whenReply} />
+              <Reply
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                post={reply}
+                depth={depth + 1}
+                whenReply={whenReply}
+              />
             ))}
           </div>
         </>

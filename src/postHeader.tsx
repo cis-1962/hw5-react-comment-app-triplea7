@@ -19,6 +19,7 @@ export default function PostHeader() {
 
   return (
     <div>
+      <strong>New Post</strong>
       <div>
         <input
           type="text"
@@ -58,7 +59,7 @@ export default function PostHeader() {
         {posts.map((p, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index}>
-            <Reply post={p} whenReply={ifReply(index)} />
+            <Reply post={p} depth={0} whenReply={ifReply(index)} />
           </div>
         ))}
       </div>
