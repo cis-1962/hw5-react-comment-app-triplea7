@@ -17,7 +17,7 @@ export default function Vote({ upvotes, downvotes }: VoteProps) {
           setUpvote(upvote + 1);
         }}
       >
-        Upvotes ({upvote})
+        Upvote
       </button>
       <button
         type="submit"
@@ -25,8 +25,9 @@ export default function Vote({ upvotes, downvotes }: VoteProps) {
           setDownvote(downvote + 1);
         }}
       >
-        Downvotes ({downvote})
+        Downvote
       </button>
+      Votes: {upvote + downvote}
     </div>
   );
 }
