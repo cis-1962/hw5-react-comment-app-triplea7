@@ -40,21 +40,23 @@ export default function PostHeader() {
           }}
         />
       </div>
-      <button
-        type="submit"
-        onClick={() => {
-          const newPost: ReplyProps['post'] = {
-            name: nameInput,
-            body: bodyInput,
-            replies: [],
-          };
-          setPosts([...posts, newPost]);
-          enterNameInput('');
-          enterBodyInput('');
-        }}
-      >
-        Post
-      </button>
+      {nameInput !== '' && bodyInput !== '' ? (
+        <button
+          type="submit"
+          onClick={() => {
+            const newPost: ReplyProps['post'] = {
+              name: nameInput,
+              body: bodyInput,
+              replies: [],
+            };
+            setPosts([...posts, newPost]);
+            enterNameInput('');
+            enterBodyInput('');
+          }}
+        >
+          Post
+        </button>
+      ) : null}
       <div>
         {posts.map((p, index) => (
           // eslint-disable-next-line react/no-array-index-key

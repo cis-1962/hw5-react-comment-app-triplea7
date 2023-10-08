@@ -25,7 +25,9 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
         <button type="submit" onClick={() => setShowInputs(true)}>
           Reply
         </button>
-      ) : (
+      ) : null}
+
+      {showInputs ? (
         <>
           <div>
             <input
@@ -47,16 +49,18 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
               }}
             />
           </div>
-          <button
-            type="submit"
-            onClick={() => {
-              whenReply(replier, replyBody);
-              setReplier('');
-              setReplyBody('');
-            }}
-          >
-            Post
-          </button>
+          {depth < 2 && replier !== '' && replyBody !== '' ? (
+            <button
+              type="submit"
+              onClick={() => {
+                whenReply(replier, replyBody);
+                setReplier('');
+                setReplyBody('');
+              }}
+            >
+              Post
+            </button>
+          ) : null}
           <div>
             {post.replies.map((reply, index) => (
               <Reply
@@ -69,7 +73,7 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
             ))}
           </div>
         </>
-      )}
+      ) : null}
     </div>
   );
 }
