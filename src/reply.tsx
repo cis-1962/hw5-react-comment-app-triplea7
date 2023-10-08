@@ -1,9 +1,11 @@
 import { useState } from 'react';
-// eslint-disable-next-line import/no-cycle
-import { PostProps } from './postHeader';
 
-interface ReplyProps {
-  post: PostProps;
+export interface ReplyProps {
+  post: {
+    name: string;
+    body: string;
+    replies: ReplyProps['post'][];
+  };
   whenReply: (name: string, body: string) => void;
 }
 
