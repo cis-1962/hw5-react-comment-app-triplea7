@@ -15,12 +15,16 @@ export default function PostHeader() {
           name: replier,
           body: replyBody,
           replies: [],
+          upvotes: 0,
+          downvotes: 0,
         });
       } else {
         currPosts[index].replies.push({
           name: replier,
           body: replyBody,
           replies: [],
+          upvotes: 0,
+          downvotes: 0,
         });
       }
 
@@ -58,6 +62,8 @@ export default function PostHeader() {
               name: nameInput,
               body: bodyInput,
               replies: [],
+              upvotes: 0,
+              downvotes: 0,
             };
             setPosts([...posts, newPost]);
             enterNameInput('');

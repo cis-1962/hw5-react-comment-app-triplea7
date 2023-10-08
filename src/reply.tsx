@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import Vote from './voting';
 
 export interface ReplyProps {
   post: {
     name: string;
     body: string;
     replies: ReplyProps['post'][];
+    upvotes: number;
+    downvotes: number;
   };
   depth: number;
   whenReply: (name: string, body: string, pIdx?: number) => void;
@@ -23,6 +26,7 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
         <strong>{post.name}: </strong>
         {post.body}
       </p>
+      <Vote upvotes={post.upvotes} downvotes={post.downvotes} />
       {canReply && !showInputs ? (
         <button type="submit" onClick={() => setShowInputs(true)}>
           Reply
