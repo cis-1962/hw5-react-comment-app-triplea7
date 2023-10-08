@@ -72,14 +72,16 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
       )}
       <div>
         {post.replies.map((reply, index) => (
-          <Reply
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            post={reply}
-            depth={depth + 1}
-            whenReply={whenReply}
-            pIdx={pIdx}
-          />
+          <div className="reply">
+            <Reply
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              post={reply}
+              depth={depth + 1}
+              whenReply={whenReply}
+              pIdx={pIdx}
+            />
+          </div>
         ))}
       </div>
     </div>
