@@ -8,8 +8,8 @@ export default function PostHeader() {
   const [posts, setPosts] = useState<ReplyProps['post'][]>([]);
 
   const ifReply =
-    (index: number, depth: number, parentIdx?: number) =>
-    (replier: string, replyBody: string) => {
+    (index: number, parentIdx?: number) =>
+    (replier: string, replyBody: string, depth: number) => {
       const currPosts = [...posts];
 
       if (parentIdx !== undefined) {
@@ -21,7 +21,7 @@ export default function PostHeader() {
             replies: [],
             upvotes: 0,
             downvotes: 0,
-            depth: depth + 1,
+            depth: parent.depth + 1,
           });
         }
       } else if (depth < 2) {
@@ -83,7 +83,7 @@ export default function PostHeader() {
       {posts.map((p, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <div key={index} className="post">
-          <Reply post={p} whenReply={ifReply(index, p.depth)} />
+          <Reply post={p} whenReply={ifReply(index)} />
         </div>
       ))}
     </div>

@@ -11,9 +11,10 @@ export interface ReplyProps {
     depth: number;
   };
   whenReply: (name: string, body: string, depth: number) => void;
+  parentIdx?: number;
 }
 
-export default function Reply({ post, whenReply }: ReplyProps) {
+export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
   const [replier, setReplier] = useState('');
   const [replyBody, setReplyBody] = useState('');
   const [showInputs, setShowInputs] = useState(false);
@@ -77,6 +78,7 @@ export default function Reply({ post, whenReply }: ReplyProps) {
               key={index}
               post={reply}
               whenReply={whenReply}
+              parentIdx={index}
             />
           </div>
         ))}
