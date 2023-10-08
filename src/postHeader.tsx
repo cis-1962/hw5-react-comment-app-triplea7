@@ -73,14 +73,16 @@ export default function PostHeader() {
           Post
         </button>
       ) : null}
-      <div>
+      <h1>
+        {' '}
+        Posts:
         {posts.map((p, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index} className="post">
             <Reply post={p} depth={0} whenReply={ifReply(index)} pIdx={index} />
           </div>
         ))}
-      </div>
+      </h1>
     </div>
   );
 }
