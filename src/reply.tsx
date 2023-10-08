@@ -14,6 +14,7 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
   const [replier, setReplier] = useState('');
   const [replyBody, setReplyBody] = useState('');
   const [showInputs, setShowInputs] = useState(false);
+  const canReply = depth < 3;
 
   return (
     <div style={{ marginLeft: depth * 25 }}>
@@ -21,60 +22,55 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
         <strong>{post.name}: </strong>
         {post.body}
       </p>
-      {depth < 3 && !showInputs ? (
+      {canReply && !showInputs ? (
         <button type="submit" onClick={() => setShowInputs(true)}>
           Reply
         </button>
       ) : null}
-
-      <div>
-        {showInputs ? (
-          <div>
-            <div>
-              <input
-                type="text"
-                value={replier}
-                placeholder="Your name here"
-                onChange={(e) => {
-                  setReplier(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                value={replyBody}
-                placeholder="Speak your truth..."
-                onChange={(ev) => {
-                  setReplyBody(ev.target.value);
-                }}
-              />
-            </div>
-            {depth < 3 && replier !== '' && replyBody !== '' ? (
-              <button
-                type="submit"
-                onClick={() => {
-                  whenReply(replier, replyBody);
-                  setReplier('');
-                  setReplyBody('');
-                }}
-              >
-                Post
-              </button>
-            ) : null}
-          </div>
-        ) : null}
+      {canReply && showInputs && (
         <div>
-          {post.replies.map((reply, index) => (
-            <Reply
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-              post={reply}
-              depth={depth + 1}
-              whenReply={whenReply}
+          <div>
+            <input
+              type="text"
+              value={replier}
+              placeholder="Your name here"
+              onChange={(e) => {
+                setReplier(e.target.value);
+              }}
             />
-          ))}
+          </div>
+          <div>
+            <input
+              type="text"
+              value={replyBody}
+              placeholder="Speak your truth..."
+              onChange={(ev) => {
+                setReplyBody(ev.target.value);
+              }}
+            />
+          </div>
+          <button
+            type="submit"
+            onClick={() => {
+              whenReply(replier, replyBody);
+              setReplier('');
+              setReplyBody('');
+            }}
+          >
+            Post
+          </button>
         </div>
+      )}
+      <div>
+        {post.replies.map((reply, index) => (
+          <Reply
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            post={reply}
+            depth={depth + 1}
+            whenReply={whenReply}
+          />
+        ))}
       </div>
     </div>
   );
