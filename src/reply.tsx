@@ -1,46 +1,54 @@
 import { useState } from 'react';
-// eslint-disable-next-line import/no-named-as-default
-import { posts } from './postHeader';
 // eslint-disable-next-line import/no-cycle
-import Post from './post';
+import { PostProps } from './postHeader';
 
-export default function Reply() {
-  const [nameInput, enterNameInput] = useState('');
-  const [bodyInput, enterBodyInput] = useState('');
+interface ReplyProps {
+  post: PostProps;
+  whenReply: (name: string, body: string) => void;
+}
+
+export default function Reply({ post, whenReply }: ReplyProps) {
+  const [replier, setReplier] = useState('');
+  const [replyBody, setReplyBody] = useState('');
 
   return (
     <div>
       <div>
         <input
           type="text"
-          value={nameInput}
-          placeholder="Name"
+          value={replier}
+          placeholder="Your name here"
           onChange={(e) => {
-            enterNameInput(e.target.value);
+            setReplier(e.target.value);
           }}
         />
       </div>
       <div>
         <input
           type="text"
-          value={bodyInput}
-          placeholder="Reply"
+          value={replyBody}
+          placeholder="Speak your truth..."
           onChange={(ev) => {
-            enterBodyInput(ev.target.value);
+            setReplyBody(ev.target.value);
           }}
         />
       </div>
       <button
         type="submit"
         onClick={() => {
-          const props = { name: nameInput, body: bodyInput };
-          posts.push(Post(props));
-          enterNameInput('');
-          enterBodyInput('');
+          whenReply(replier, replyBody);
+          setReplier('');
+          setReplyBody('');
         }}
       >
         Reply
       </button>
+      <div>
+        {post.replies.map((reply, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <Reply key={index} post={reply} whenReply={whenReply} />
+        ))}
+      </div>
     </div>
   );
 }

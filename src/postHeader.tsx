@@ -1,12 +1,27 @@
 import { useState } from 'react';
 // eslint-disable-next-line import/no-named-as-default
-import Post from './post';
+import Reply from './reply';
 
-const posts = [<div />];
+export interface PostProps {
+  name: string;
+  body: string;
+  replies: PostProps[];
+}
 
 export default function PostHeader() {
   const [nameInput, enterNameInput] = useState('');
   const [bodyInput, enterBodyInput] = useState('');
+  let posts: PostProps[] = [];
+
+  const ifReply = (index: number) => (replier: string, replyBody: string) => {
+    const currPosts = posts;
+    currPosts[index].replies.push({
+      name: replier,
+      body: replyBody,
+      replies: [],
+    });
+    posts = currPosts;
+  };
 
   return (
     <div>
@@ -33,15 +48,26 @@ export default function PostHeader() {
       <button
         type="submit"
         onClick={() => {
-          const props = { name: nameInput, body: bodyInput };
-          posts.push(Post(props));
+          const newPost = {
+            name: nameInput,
+            body: bodyInput,
+            replies: [],
+          };
+          posts.push(newPost);
           enterNameInput('');
           enterBodyInput('');
         }}
       >
         Post
       </button>
-      <div>{posts}</div>
+      <div>
+        {posts.map((post, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index}>
+            <Reply post={post} whenReply={ifReply(index)} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
