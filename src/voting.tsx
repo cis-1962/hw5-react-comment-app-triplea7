@@ -6,8 +6,8 @@ interface VoteProps {
 }
 
 export default function Vote({ upvotes, downvotes }: VoteProps) {
-  const [upvote, setUpvote] = useState(0);
-  const [downvote, setDownvote] = useState(0);
+  const [upvote, setUpvote] = useState(upvotes);
+  const [downvote, setDownvote] = useState(downvotes);
 
   return (
     <div>

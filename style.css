@@ -4,18 +4,31 @@ h1 {
 }
 
 .post {
+  display: flex;
   border: 2px solid #281e5d;
   border-radius: 25px;
   font: 'Courier';
+  padding: 10px;
 }
 
 .reply {
+  display: flex;
   border: 2px solid #281e5d;
   border-radius: 25px;
   font: 'Courier';
+  padding: 10px;
+}
+
+.voting {
+  margin-right: 10px;
+}
+
+.voting button {
+  margin-right: 5px;
 }
 
 button {
   font: 'Courier';
   color: #281e5d;
+  padding: 5px;
 }

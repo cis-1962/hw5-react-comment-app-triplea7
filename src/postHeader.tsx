@@ -33,10 +33,9 @@ export default function PostHeader() {
 
   return (
     <div>
-      <strong>New Post</strong>
+      <h1>New Post</h1>
       <div>
-        <input
-          type="text"
+        <textarea
           value={nameInput}
           placeholder="Your name here"
           onChange={(e) => {
@@ -45,8 +44,7 @@ export default function PostHeader() {
         />
       </div>
       <div>
-        <input
-          type="text"
+        <textarea
           value={bodyInput}
           placeholder="Speak your truth..."
           onChange={(ev) => {
@@ -73,16 +71,13 @@ export default function PostHeader() {
           Post
         </button>
       ) : null}
-      <h1>
-        {' '}
-        Posts:
-        {posts.map((p, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <div key={index} className="post">
-            <Reply post={p} depth={0} whenReply={ifReply(index)} pIdx={index} />
-          </div>
-        ))}
-      </h1>
+      <h1> Posts:</h1>
+      {posts.map((p, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <div key={index} className="post">
+          <Reply post={p} depth={0} whenReply={ifReply(index)} pIdx={index} />
+        </div>
+      ))}
     </div>
   );
 }

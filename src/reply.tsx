@@ -38,8 +38,7 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
       {canReply && showInputs && (
         <div>
           <div>
-            <input
-              type="text"
+            <textarea
               value={replier}
               placeholder="Your name here"
               onChange={(e) => {
@@ -48,8 +47,7 @@ export default function Reply({ post, depth, whenReply, pIdx }: ReplyProps) {
             />
           </div>
           <div>
-            <input
-              type="text"
+            <textarea
               value={replyBody}
               placeholder="Clap back!"
               onChange={(ev) => {
