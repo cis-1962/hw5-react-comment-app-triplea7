@@ -9,6 +9,12 @@ h1 {
   font: 'Courier';
 }
 
+Reply {
+  border: 2px solid #281e5d;
+  border-radius: 25px;
+  font: 'Courier';
+}
+
 button {
   font: 'Courier';
   color: #281e5d;
