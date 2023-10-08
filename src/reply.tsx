@@ -27,53 +27,55 @@ export default function Reply({ post, depth, whenReply }: ReplyProps) {
         </button>
       ) : null}
 
-      {showInputs ? (
-        <>
+      <div>
+        {showInputs ? (
           <div>
-            <input
-              type="text"
-              value={replier}
-              placeholder="Your name here"
-              onChange={(e) => {
-                setReplier(e.target.value);
-              }}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              value={replyBody}
-              placeholder="Speak your truth..."
-              onChange={(ev) => {
-                setReplyBody(ev.target.value);
-              }}
-            />
-          </div>
-          {depth < 3 && replier !== '' && replyBody !== '' ? (
-            <button
-              type="submit"
-              onClick={() => {
-                whenReply(replier, replyBody);
-                setReplier('');
-                setReplyBody('');
-              }}
-            >
-              Post
-            </button>
-          ) : null}
-          <div>
-            {post.replies.map((reply, index) => (
-              <Reply
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                post={reply}
-                depth={depth + 1}
-                whenReply={whenReply}
+            <div>
+              <input
+                type="text"
+                value={replier}
+                placeholder="Your name here"
+                onChange={(e) => {
+                  setReplier(e.target.value);
+                }}
               />
-            ))}
+            </div>
+            <div>
+              <input
+                type="text"
+                value={replyBody}
+                placeholder="Speak your truth..."
+                onChange={(ev) => {
+                  setReplyBody(ev.target.value);
+                }}
+              />
+            </div>
+            {depth < 3 && replier !== '' && replyBody !== '' ? (
+              <button
+                type="submit"
+                onClick={() => {
+                  whenReply(replier, replyBody);
+                  setReplier('');
+                  setReplyBody('');
+                }}
+              >
+                Post
+              </button>
+            ) : null}
           </div>
-        </>
-      ) : null}
+        ) : null}
+        <div>
+          {post.replies.map((reply, index) => (
+            <Reply
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              post={reply}
+              depth={depth + 1}
+              whenReply={whenReply}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
