@@ -21,63 +21,72 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
   const canReply = post.depth < 3;
 
   return (
-    <div style={{ marginLeft: post.depth * 25 }}>
-      <p>
-        <strong>{post.name}: </strong>
-        {post.body}
-        <Vote upvotes={post.upvotes} downvotes={post.downvotes} />
-      </p>
-      {canReply && !showInputs ? (
-        <div>
-          {' '}
-          <button
-            className="reply"
-            type="submit"
-            onClick={() => setShowInputs(true)}
-          >
-            Reply
-          </button>{' '}
-        </div>
-      ) : null}
-      {canReply && showInputs && (
-        <div>
+    <>
+      <div
+        style={{
+          marginLeft: post.depth * 25,
+          border: 2,
+          borderColor: '#281e5d',
+          borderRadius: 25,
+        }}
+      >
+        <p>
+          <strong>{post.name}: </strong>
+          {post.body}
+          <Vote upvotes={post.upvotes} downvotes={post.downvotes} />
+        </p>
+        {canReply && !showInputs ? (
           <div>
-            <textarea
-              value={replier}
-              placeholder="Your name here"
-              onChange={(e) => {
-                setReplier(e.target.value);
-              }}
-            />
-          </div>
-          <div>
-            <textarea
-              value={replyBody}
-              placeholder="Clap back!"
-              onChange={(ev) => {
-                setReplyBody(ev.target.value);
-              }}
-            />
-          </div>
-          {replier !== '' && replyBody !== '' ? (
+            {' '}
             <button
               className="reply"
               type="submit"
-              onClick={() => {
-                whenReply(replier, replyBody, post.depth + 1);
-                setReplier('');
-                setReplyBody('');
-                setShowInputs(false);
-              }}
+              onClick={() => setShowInputs(true)}
             >
-              Post
-            </button>
-          ) : null}
-        </div>
-      )}
+              Reply
+            </button>{' '}
+          </div>
+        ) : null}
+        {canReply && showInputs && (
+          <div>
+            <div>
+              <textarea
+                value={replier}
+                placeholder="Your name here"
+                onChange={(e) => {
+                  setReplier(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <textarea
+                value={replyBody}
+                placeholder="Clap back!"
+                onChange={(ev) => {
+                  setReplyBody(ev.target.value);
+                }}
+              />
+            </div>
+            {replier !== '' && replyBody !== '' ? (
+              <button
+                className="reply"
+                type="submit"
+                onClick={() => {
+                  whenReply(replier, replyBody, post.depth + 1);
+                  setReplier('');
+                  setReplyBody('');
+                  setShowInputs(false);
+                }}
+              >
+                Post
+              </button>
+            ) : null}
+          </div>
+        )}
+      </div>
       <div>
         {post.replies.map((reply, index) => (
-          <div style={{ marginLeft: post.depth * 25 }} className="reply">
+          <div style={{ marginLeft: post.depth * 25 }}>
             <Reply
               // eslint-disable-next-line react/no-array-index-key
               key={index}
@@ -88,6 +97,6 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
