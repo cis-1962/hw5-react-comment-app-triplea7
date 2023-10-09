@@ -57,6 +57,7 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
           </div>
           {replier !== '' && replyBody !== '' ? (
             <button
+              className="reply"
               type="submit"
               onClick={() => {
                 whenReply(replier, replyBody, post.depth + 1);

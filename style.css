@@ -3,12 +3,21 @@ h1 {
   color: #281e5d;
 }
 
+textarea {
+  font: 'Courier';
+}
+
+div {
+  padding: 5px;
+}
+
 .post {
   display: flex;
   border: 2px solid #281e5d;
   border-radius: 25px;
   font: 'Courier';
   padding: 10px;
+  position: relative;
 }
 
 .reply {
@@ -17,20 +26,29 @@ h1 {
   border-radius: 25px;
   font: 'Courier';
   padding: 10px;
+  position: relative;
+}
+
+.reply button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .voting {
+  font: 'Courier';
   margin-right: 10px;
   padding: 5px;
 }
 
 .voting button {
+  font: 'Courier Bold';
   margin-right: 5px;
   padding: 5px;
 }
 
 button {
-  font: 'Courier';
+  font: 'Courier Bold';
   color: #281e5d;
   padding: 5px;
 }

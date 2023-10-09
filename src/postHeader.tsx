@@ -61,6 +61,7 @@ export default function PostHeader() {
       </div>
       {nameInput !== '' && bodyInput !== '' ? (
         <button
+          className="reply"
           type="submit"
           onClick={() => {
             const newPost: ReplyProps['post'] = {
