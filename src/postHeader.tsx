@@ -24,7 +24,7 @@ export default function PostHeader() {
             depth: parent.depth + 1,
           });
         }
-      } else if (depth < 3) {
+      } else if (depth < 4) {
         currPosts[index].replies.push({
           name: replier,
           body: replyBody,
