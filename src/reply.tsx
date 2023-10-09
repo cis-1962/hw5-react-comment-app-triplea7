@@ -25,8 +25,8 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
       <p>
         <strong>{post.name}: </strong>
         {post.body}
+        <Vote upvotes={post.upvotes} downvotes={post.downvotes} />
       </p>
-      <Vote upvotes={post.upvotes} downvotes={post.downvotes} />
       {canReply && !showInputs ? (
         <div>
           {' '}

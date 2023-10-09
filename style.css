@@ -29,7 +29,7 @@ div {
   position: relative;
 }
 
-.reply button {
+button.reply {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -41,7 +41,7 @@ div {
   padding: 5px;
 }
 
-.voting button {
+button.voting {
   font: 'Courier Bold';
   padding: 5px;
 }
