@@ -87,7 +87,7 @@ export default function PostHeader() {
       <h1> Posts:</h1>
       {posts.map((p, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <div key={index} className="post">
+        <div key={index} className="post" style={{ marginLeft: p.depth * 25 }}>
           <Reply post={p} whenReply={ifReply(index)} />
         </div>
       ))}
