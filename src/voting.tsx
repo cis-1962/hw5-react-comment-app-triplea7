@@ -10,8 +10,8 @@ export default function Vote({ upvotes, downvotes }: VoteProps) {
   const [downvote, setDownvote] = useState(downvotes);
 
   return (
-    <div style={{ marginRight: 25 }}>
-      <p>Votes: {upvote - downvote}</p>
+    <div>
+      <p style={{ font: 'Lucida Handwriting' }}>Votes: {upvote - downvote}</p>
       <div>
         <button
           className="voting"

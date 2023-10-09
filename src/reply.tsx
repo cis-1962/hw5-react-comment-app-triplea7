@@ -22,8 +22,8 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
 
   return (
     <div>
-      <p>
-        <strong>{post.name}: </strong>
+      <p style={{ font: 'Lucida Handwriting' }}>
+        <strong style={{ font: 'Lucida Handwriting' }}>{post.name}: </strong>
         {post.body}
         <Vote upvotes={post.upvotes} downvotes={post.downvotes} />
       </p>

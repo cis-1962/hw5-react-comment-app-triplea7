@@ -40,11 +40,12 @@ export default function PostHeader() {
 
   return (
     <div>
-      <h1>New Post</h1>
+      <h1 style={{ font: 'Lucida Handwriting' }}>New Post</h1>
       <div className="post">
         <div>
           <div>
             <textarea
+              style={{ font: 'Lucida Handwriting' }}
               value={nameInput}
               placeholder="Your name here"
               onChange={(e) => {
@@ -54,6 +55,7 @@ export default function PostHeader() {
           </div>
           <div>
             <textarea
+              style={{ font: 'Lucida Handwriting' }}
               value={bodyInput}
               placeholder="Speak your truth..."
               onChange={(ev) => {
