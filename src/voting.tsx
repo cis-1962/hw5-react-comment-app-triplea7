@@ -11,7 +11,7 @@ export default function Vote({ upvotes, downvotes }: VoteProps) {
 
   return (
     <div>
-      <p style={{ font: 'Lucida Handwriting' }}>Votes: {upvote - downvote}</p>
+      <p>Votes: {upvote - downvote}</p>
       <div>
         <button
           className="voting"

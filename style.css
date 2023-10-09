@@ -1,6 +1,6 @@
 h1 {
-  font: 'Lucida Handwriting';
   color: #281e5d;
+  font-style: CenturyGothic;
 }
 
 div {
@@ -11,19 +11,19 @@ div {
   display: flex;
   border: 2px solid #281e5d;
   border-radius: 25px;
-  font: 'Lucida Handwriting';
   padding: 10px;
   position: relative;
+  font-style: CenturyGothic;
 }
 
 .reply {
   display: flex;
   border: 2px solid #281e5d;
   border-radius: 25px;
-  font: Courier;
   padding: 10px;
   position: relative;
   margin-left: 25px;
+  font-style: CenturyGothic;
 }
 
 button.reply {
@@ -33,18 +33,16 @@ button.reply {
 }
 
 .voting {
-  font: Courier;
+  font-style: CenturyGothic;
   margin-right: 10px;
   padding: 5px;
 }
 
 button.voting {
-  font: 'Courier Bold';
   padding: 5px;
 }
 
 button {
-  font: 'Courier Bold';
   color: #281e5d;
   padding: 5px;
 }
