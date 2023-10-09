@@ -41,45 +41,47 @@ export default function PostHeader() {
   return (
     <div>
       <h1>New Post</h1>
-      <div>
-        <textarea
-          value={nameInput}
-          placeholder="Your name here"
-          onChange={(e) => {
-            enterNameInput(e.target.value);
-          }}
-        />
+      <div className="post">
+        <div>
+          <textarea
+            value={nameInput}
+            placeholder="Your name here"
+            onChange={(e) => {
+              enterNameInput(e.target.value);
+            }}
+          />
+        </div>
+        <div>
+          <textarea
+            value={bodyInput}
+            placeholder="Speak your truth..."
+            onChange={(ev) => {
+              enterBodyInput(ev.target.value);
+            }}
+          />
+        </div>
+        {nameInput !== '' && bodyInput !== '' ? (
+          <button
+            className="reply"
+            type="submit"
+            onClick={() => {
+              const newPost: ReplyProps['post'] = {
+                name: nameInput,
+                body: bodyInput,
+                replies: [],
+                upvotes: 0,
+                downvotes: 0,
+                depth: 0,
+              };
+              setPosts([...posts, newPost]);
+              enterNameInput('');
+              enterBodyInput('');
+            }}
+          >
+            Post
+          </button>
+        ) : null}
       </div>
-      <div>
-        <textarea
-          value={bodyInput}
-          placeholder="Speak your truth..."
-          onChange={(ev) => {
-            enterBodyInput(ev.target.value);
-          }}
-        />
-      </div>
-      {nameInput !== '' && bodyInput !== '' ? (
-        <button
-          className="reply"
-          type="submit"
-          onClick={() => {
-            const newPost: ReplyProps['post'] = {
-              name: nameInput,
-              body: bodyInput,
-              replies: [],
-              upvotes: 0,
-              downvotes: 0,
-              depth: 0,
-            };
-            setPosts([...posts, newPost]);
-            enterNameInput('');
-            enterBodyInput('');
-          }}
-        >
-          Post
-        </button>
-      ) : null}
       <h1> Posts:</h1>
       {posts.map((p, index) => (
         // eslint-disable-next-line react/no-array-index-key
