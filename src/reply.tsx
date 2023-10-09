@@ -21,7 +21,7 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
   const canReply = post.depth < 3;
 
   return (
-    <div style={{ marginLeft: post.depth * 25 }}>
+    <div>
       <p>
         <strong>{post.name}: </strong>
         {post.body}

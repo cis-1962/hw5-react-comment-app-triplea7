@@ -1,10 +1,10 @@
 h1 {
-  font: 'Courier Bold';
+  font: 'Lucida Handwriting';
   color: #281e5d;
 }
 
 textarea {
-  font: 'Courier';
+  font: '"Lucida Handwriting"';
 }
 
 div {
@@ -15,7 +15,7 @@ div {
   display: flex;
   border: 2px solid #281e5d;
   border-radius: 25px;
-  font: 'Courier';
+  font: 'Lucida Handwriting';
   padding: 10px;
   position: relative;
 }
@@ -24,7 +24,7 @@ div {
   display: flex;
   border: 2px solid #281e5d;
   border-radius: 25px;
-  font: 'Courier';
+  font: Courier;
   padding: 10px;
   position: relative;
   margin-left: 25px;
@@ -37,7 +37,7 @@ button.reply {
 }
 
 .voting {
-  font: 'Courier';
+  font: Courier;
   margin-right: 10px;
   padding: 5px;
 }
