@@ -43,22 +43,24 @@ export default function PostHeader() {
       <h1>New Post</h1>
       <div className="post">
         <div>
-          <textarea
-            value={nameInput}
-            placeholder="Your name here"
-            onChange={(e) => {
-              enterNameInput(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <textarea
-            value={bodyInput}
-            placeholder="Speak your truth..."
-            onChange={(ev) => {
-              enterBodyInput(ev.target.value);
-            }}
-          />
+          <div>
+            <textarea
+              value={nameInput}
+              placeholder="Your name here"
+              onChange={(e) => {
+                enterNameInput(e.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <textarea
+              value={bodyInput}
+              placeholder="Speak your truth..."
+              onChange={(ev) => {
+                enterBodyInput(ev.target.value);
+              }}
+            />
+          </div>
         </div>
         {nameInput !== '' && bodyInput !== '' ? (
           <button
