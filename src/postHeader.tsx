@@ -89,15 +89,6 @@ export default function PostHeader() {
         <div
           // eslint-disable-next-line react/no-array-index-key
           key={index}
-          style={{
-            marginLeft: p.depth * 25,
-            display: 'flex',
-            border: '2px solid #281e5d',
-            borderRadius: 25,
-            font: 'Courier',
-            padding: 10,
-            position: 'relative',
-          }}
         >
           <Reply post={p} whenReply={ifReply(index)} />
         </div>

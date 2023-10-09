@@ -77,7 +77,17 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
       )}
       <div>
         {post.replies.map((reply, index) => (
-          <div className="reply">
+          <div
+            style={{
+              marginLeft: post.depth * 25,
+              display: 'flex',
+              border: '2px solid #281e5d',
+              borderRadius: 25,
+              font: 'Courier',
+              padding: 10,
+              position: 'relative',
+            }}
+          >
             <Reply
               // eslint-disable-next-line react/no-array-index-key
               key={index}
