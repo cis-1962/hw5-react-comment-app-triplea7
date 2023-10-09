@@ -21,15 +21,7 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
   const canReply = post.depth < 3;
 
   return (
-    <div
-      style={{
-        marginLeft: post.depth * 25,
-        border: 2,
-        borderColor: '#281e5d',
-        borderRadius: 25,
-        borderWidth: 'solid',
-      }}
-    >
+    <div style={{ marginLeft: post.depth * 25 }}>
       <p>
         <strong>{post.name}: </strong>
         {post.body}
@@ -85,7 +77,7 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
       )}
       <div>
         {post.replies.map((reply, index) => (
-          <div style={{ marginLeft: post.depth * 25 }}>
+          <div className="reply">
             <Reply
               // eslint-disable-next-line react/no-array-index-key
               key={index}

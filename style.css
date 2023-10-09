@@ -27,6 +27,7 @@ div {
   font: 'Courier';
   padding: 10px;
   position: relative;
+  margin-left: 25px;
 }
 
 button.reply {
