@@ -30,7 +30,11 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
       {canReply && !showInputs ? (
         <div>
           {' '}
-          <button type="submit" onClick={() => setShowInputs(true)}>
+          <button
+            className="reply"
+            type="submit"
+            onClick={() => setShowInputs(true)}
+          >
             Reply
           </button>{' '}
         </div>
@@ -73,7 +77,7 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
       )}
       <div>
         {post.replies.map((reply, index) => (
-          <div className="reply" style={{ marginLeft: reply.depth * 25 }}>
+          <div className="reply">
             <Reply
               // eslint-disable-next-line react/no-array-index-key
               key={index}
