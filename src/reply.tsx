@@ -79,7 +79,7 @@ export default function Reply({ post, whenReply, parentIdx }: ReplyProps) {
         {post.replies.map((reply, index) => (
           <div
             style={{
-              marginLeft: post.depth * 25,
+              marginLeft: reply.depth * 25,
               display: 'flex',
               border: '2px solid #281e5d',
               borderRadius: 25,

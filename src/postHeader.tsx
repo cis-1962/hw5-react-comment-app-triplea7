@@ -87,6 +87,7 @@ export default function PostHeader() {
       <h1> Posts:</h1>
       {posts.map((p, index) => (
         <div
+          className="post"
           // eslint-disable-next-line react/no-array-index-key
           key={index}
         >
