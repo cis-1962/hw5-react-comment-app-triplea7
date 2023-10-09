@@ -12,6 +12,7 @@ export default function Vote({ upvotes, downvotes }: VoteProps) {
   return (
     <div>
       <button
+        className="voting"
         type="submit"
         onClick={() => {
           setUpvote(upvote + 1);
@@ -20,6 +21,7 @@ export default function Vote({ upvotes, downvotes }: VoteProps) {
         Upvote
       </button>
       <button
+        className="voting"
         type="submit"
         onClick={() => {
           setDownvote(downvote + 1);
